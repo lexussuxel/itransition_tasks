@@ -44,17 +44,18 @@ class Table
   end
 
   def show
-    max = ARGV.max.length
+    max = if ARGV.max.length > 4 then ARGV.max.length  else 4 end
     @table.each do |line|
       line.each do |position|
-        print position.to_s + (" " * (max - position.to_s.length + 1)) + "|"
+        print position.to_s + (" " * (max - position.to_s.length + 1).abs) + "|"
       end
-      print "\n#{"-"* (ARGV.length * max * 1.5)}\n"
+      print "\n#{"-"* (ARGV.length * max * 1.7)}\n"
     end
   end
 end
 
 def main
+  return "Try to enter more then #{ARGV.length} argument" if ARGV.length < 3
   return "Try to enter odd count of arguments" unless ARGV.length.odd?
   return "Try not to repeat your moves" if ARGV.length - ARGV.uniq.length != 0
   menu = Menu.new
