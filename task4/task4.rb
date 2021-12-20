@@ -55,7 +55,7 @@ class Table
 end
 
 def main
-  return "Try to enter more then #{ARGV.length} argument" if ARGV.length < 3
+  return "Try to enter more then #{ARGV.length} argument" if ARGV.length < 2
   return "Try to enter odd count of arguments" unless ARGV.length.odd?
   return "Try not to repeat your moves" if ARGV.length - ARGV.uniq.length != 0
   menu = Menu.new
