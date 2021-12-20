@@ -44,11 +44,12 @@ class Table
   end
 
   def show
+    max = ARGV.max.length
     @table.each do |line|
       line.each do |position|
-        print position.to_s + "|"
+        print position.to_s + (" " * (max - position.to_s.length + 1)) + "|"
       end
-      print "\n---------------------------------\n"
+      print "\n#{"-"* (ARGV.length * max * 1.5)}\n"
     end
   end
 end
@@ -78,8 +79,7 @@ def main
     else
       if ymove == "?"
         table.show
-      end
-      if ymove == "0"
+      elsif ymove == "0"
         break
       else
       p "Computer move: #{menu.menu[data]}"
